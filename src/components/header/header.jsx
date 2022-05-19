@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <>
 
-      <nav id="container" role="navigation">
+      <nav id="container" className="container-nav" role="navigation">
           <h1 className="name-title">Table Component</h1>
           <div className="header-links">
             <ul>

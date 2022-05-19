@@ -1,14 +1,21 @@
-.search-bar-all {
-    /* display: flex;
-    padding-left: 18px; */
+.data-all {
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.5rem #fff, 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
+    border-radius: 20px;
+    margin: auto;
+    padding: 2.5rem;
+    width: 50vw;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 5vh;
 }
 
 .search-all {
     width: 50vw;
     display: flex;
 }
-.search-all h2 {
-    margin-bottom: -2vh;
+.search-bar-all h2 {
+    margin-bottom: 0vh;
 }
 
 .wrap-all {

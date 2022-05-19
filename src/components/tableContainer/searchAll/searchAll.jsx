@@ -4,7 +4,7 @@ import './searchAll.css';
 const { Search } = Input;
 
 const SearchAll = ({ searchChecked }) => (
-    <div className="search-bar-all data">
+    <div className="search-bar-all data-all">
         <div className="wrap-all">
             <h2>Search all...</h2>
             <div className="search-all animate__animated animate__fadeInLeft">

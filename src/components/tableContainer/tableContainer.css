@@ -6,15 +6,14 @@ body {
 .data {
     box-shadow: 0.2rem 0.2rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.5rem #fff, 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
     border-radius: 20px;
-    margin: 2rem;
-    padding: 1.5rem;
-    /* display: flex;
-    flex-direction: row; */
-    align-items: left !important;
+    margin: auto;
+    padding: 2.5rem;
+    width: 70vw;
+    display: flex;
     justify-content: left;
-    /* align-items: center;
-        justify-content: center; */
+    align-items: left !important;
     padding-left: -10%;
+    margin-bottom: 5vh;
 }
 .dataSize { 
     width: 50vw;
