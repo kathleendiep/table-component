@@ -7,7 +7,7 @@ const SearchBarComponent = ({ searchChanged }) => (
     <div className="search-bar">
         <div className="wrap">
             <div className="search animate__animated animate__fadeInLeft">
-                <Search placeholder="Search data..." size="large" onChange={searchChanged} />
+                <Search placeholder="Search First name..." size="large" onChange={searchChanged} />
             </div>
         </div>
     </div>

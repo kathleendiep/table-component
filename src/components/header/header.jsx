@@ -12,7 +12,7 @@ const Header = () => {
           <h1 className="name-title">Table Component</h1>
           <div className="header-links">
             <ul>
-              <li data-menuanchor="fourthPage">Home</li>
+              <li data-menuanchor="fourthPage">Kathleen Diep</li>
             </ul>
           </div>
       </nav>

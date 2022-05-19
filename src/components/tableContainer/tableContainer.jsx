@@ -1,8 +1,11 @@
-import { useState, React } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
-import './tableContainer.css'
+import { useState, useEffect, React } from 'react';
+import { DataGrid, gridSelectionStateSelector } from '@mui/x-data-grid';
 import SearchBarComponent from './searchBarComponent/searchBarComponent';
 import SearchAll from './searchAll/searchAll';
+import TableOne from './tableOne/tableOne';
+import './tableContainer.css'
+
+// CUSTOM FOOTER - this over wrote the FooterSelectedRowCount 
 // function CustomFooter(props) {
 //   const show = true
 //   return (
@@ -11,26 +14,33 @@ import SearchAll from './searchAll/searchAll';
 //      />
 //   );
 // }
+
+const _rows = [
+  { id: 1, firstName: 'Jon' },
+  { id: 2, firstName: 'Cersei' },
+  { id: 3, firstName: 'Jaime' },
+  { id: 4, firstName: 'Arya' },
+  { id: 5, firstName: 'Arya' },
+  { id: 6, firstName: 'Arya' },
+  { id: 7, firstName: 'Arya' },
+  { id: 8, firstName: 'Arya' },
+  { id: 9, firstName: 'Arya' },
+];
+
 const TableContainer = () => {
+  const [rows, setRows] = useState(_rows)
   const [search, setSearch] = useState('')
   const [results, setResults] = useState([])
+  const [data, _setData] = useState({})
+  // to show FooterSelectedRowCount
+  const [show, setShowing]=useState(false)
 
-  const columns = [
-    { field: 'firstName', headerName: 'First name', width: 160 },
-  ];
+  const setData = _data => {
+    setRows(Object.values(_data))
+    _setData(_data)
+  }
 
-  const rows = [
-    { id: 1, firstName: 'Jon' },
-    { id: 2, firstName: 'Cersei' },
-    { id: 3, firstName: 'Jaime' },
-    { id: 4, firstName: 'Arya' },
-    { id: 5, firstName: 'Arya' },
-    { id: 6, firstName: 'Arya' },
-    { id: 7, firstName: 'Arya' },
-    { id: 8, firstName: 'Arya' },
-    { id: 9, firstName: 'Arya' },
-  ];
-
+  // Search in table
   const searchChanged = (e) => {
     const value = e.target.value
     setSearch(value)
@@ -52,30 +62,44 @@ const TableContainer = () => {
       }))
     }
   }
+  const columns = [
+    { field: 'firstName', headerName: 'First name' },
+  ];
+
+  // SEARCH ALL bar (by selecting check button) 
+  const [searchAll, setSearchAll] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+  const [checked, setChecked] = useState(false);
+
+  const searchChecked = (e) => {
+    const value = e.target.value
+    setSearchAll(value)
+    if (value.length >= 2) {
+      const _s = value.toLowerCase()
+      var _rows = search.length >= 2 ? results : rows
+      for (var id in data) {
+        var row = data[id]
+        for (var key in row) {
+          if (typeof (row[key]) !== 'string') {
+            continue
+          }
+
+          if (row[key].indexOf(_s) === 0) {
+            data[id].checked = true
+            setData(data)
+          }
+        }
+      }
+    }
+  }
 
   return (
     <>
-      <SearchAll/>
+      <SearchAll searchChecked={searchChecked} />
       <div className="data">
-        <SearchBarComponent searchChanged={searchChanged} />
-        <div style={{ height: 400, width: '100%' }} >
-          <DataGrid
-            rows={search.length >= 2 ? results : rows}
-            columns={columns}
-            pageSize={10}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-          // components={{
-          //   Footer: CustomFooter,
-          // }}
-          // componentsProps={{
-          //   footer: { background: 'red' },
-          // }}
-          />
-        </div>
-        <footer>
-            <span> info goes here</span>
-          </footer>
+      <TableOne
+        columns={columns}
+      />
       </div>
     </>
   );
