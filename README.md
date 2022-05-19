@@ -5,7 +5,7 @@ Application is built on:
 - React
 - Material UI 
 
- ![demo](https://user-images.githubusercontent.com/53194460/169408134-f7b4cf2f-215c-4ae1-a21c-5d5bd47c4619.png)
+ ![demo] (https://user-images.githubusercontent.com/53194460/169408134-f7b4cf2f-215c-4ae1-a21c-5d5bd47c4619.png)
 
 
 ##  Functionality 
