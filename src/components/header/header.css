@@ -1,0 +1,41 @@
+
+/************************
+Nav Bar 
+*************************/
+#container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    column-gap: 80px;
+}
+@media(min-width: 500px){
+  #container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    column-gap: 80px;
+}
+}
+.name-title {
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+    width: 100%;
+    margin: auto;
+  }
+
+
+.header-links {
+  width: 100%;
+
+}
+
+.header-links > ul > li {
+  display: inline;
+  float: right;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
