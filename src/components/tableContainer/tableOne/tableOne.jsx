@@ -84,7 +84,6 @@ const TableOne = (props) => {
         />
         <div className="footer">
           <pre style={{ fontSize: 10 }}>
-
             {JSON.stringify(selectedRows, null, 4)}
           </pre>
         </div>

@@ -21,9 +21,8 @@ const TableTwo = (props) => {
     const [search, setSearch] = useState('')
     const [results, setResults] = useState([])
     const [data, _setData] = useState({})
-    // to show FooterSelectedRowCount
-    const [show, setShowing]=useState(false)
-  
+    const [selectedRows, setSelectedRows] = useState([]);
+
     const setData = _data => {
       setRows(Object.values(_data))
       _setData(_data)
@@ -51,32 +50,45 @@ const TableTwo = (props) => {
         }))
       }
     }
-    return (
-        <div >
+return (
+    <div>
 
-                <SearchBarComponent searchChanged={searchChanged} />
-  
-            <div style={{ height: 400, width: '90%' }} className="table-component" >
-                <DataGrid
-                    rows={search.length >= 2 ? results : rows}
-                    columns={props.columns}
-                    pageSize={10}
-                    rowsPerPageOptions={[5]}
-                    checkboxSelection
-                    hideFooterSelectedRowCount={props.show}
-                // CUSTOM FOOTER:
-                // Tried to add custom footer - but it overrides the hideFooterSelectedRowCount 
-                //   components={{
-                // Footer: CustomFooter,
-                // }}
-                // componentsProps={{
-                //   footer: { results },
-                // }}
-                />
-            </div>
+      <SearchBarComponent searchChanged={searchChanged} />
 
+      <div style={{ height: 400, width: '90%' }} className="table-component">
+        <DataGrid
+          rows={search.length >= 2 ? results : rows}
+          columns={props.columns}
+          pageSize={10}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          hideFooterSelectedRowCount={props.show}
+          onSelectionModelChange={(ids) => {
+            const selectedIDs = new Set(ids);
+            const selectedRows = rows.filter((row) =>
+              selectedIDs.has(row.id),
+            );
+            console.log(selectedRows)
+            setSelectedRows(selectedRows);
+          }}
+        // CUSTOM FOOTER:
+        // Tried to add custom footer - but it overrides the hideFooterSelectedRowCount 
+        //   components={{
+        // Footer: CustomFooter,
+        // }}
+        // componentsProps={{
+        //   footer: { results },
+        // }}
+        />
+        <div className="footer">
+          <pre style={{ fontSize: 10 }}>
+            {JSON.stringify(selectedRows, null, 4)}
+          </pre>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
+
 
 export default TableTwo
