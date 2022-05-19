@@ -74,9 +74,7 @@ const TableTwo = (props) => {
                 // }}
                 />
             </div>
-            <span>
-                {search}
-            </span>
+
         </div>
     )
 }
