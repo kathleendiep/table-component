@@ -3,6 +3,7 @@ import { DataGrid, gridSelectionStateSelector } from '@mui/x-data-grid';
 import SearchBarComponent from './searchBarComponent/searchBarComponent';
 import SearchAll from './searchAll/searchAll';
 import TableOne from './tableOne/tableOne';
+import TableTwo from './tableTwo/tableTwo';
 import './tableContainer.css'
 
 // CUSTOM FOOTER - this over wrote the FooterSelectedRowCount 
@@ -95,11 +96,16 @@ const TableContainer = () => {
 
   return (
     <>
-      <SearchAll searchChecked={searchChecked} />
+      <SearchAll searchChecked={searchChecked}/>
       <div className="data">
+        <div className="data-row">
       <TableOne
         columns={columns}
       />
+        <TableTwo
+        columns={columns}
+      />
+      </div>
       </div>
     </>
   );
